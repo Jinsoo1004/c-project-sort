@@ -232,9 +232,18 @@ int main() {
            "    [] 7. 종료\n");
     rego:
     printf("\n");
-    printf("번호 입력 : ");
-    scanf("%d", &input);
+    printf("숫자를 입력하세요");
 
+
+    printf("번호 입력 : ");
+    if (!scanf("%d", &input)) {
+        printf("숫자가 아닌뎁쇼..??\n");
+        Sleep(1000);
+        printf("뿌뿌러쭐쪼ㅃ유ㅉㄴ쵸뿔[ㄴ뤄구ㅗ래ㅓㅈㅎㅇㅍ 오류 오류 오류 !!!\n예상치 못한 오류로 프로그램을 종료합니다...");
+        Sleep(5000);
+        return 0;
+    }
+    c:
     switch (input) {
         case 1:
             printf("\n선택정렬을 선택하셨습니다\n");
