@@ -311,10 +311,15 @@ int main() {
             }
             printf("\n\n\n\n");
             printf("정렬 전: ");
-            printArr(array, 25);
+            for (i = 0; i < 25; i++) {
+                printf("%d ", array[i]);
+            }
+            printf("\n");
             bubbleSort(array, 25); // 버블정렬 함수
             printf("정렬 후 : ");
-            printArr(array, 25);
+            for (i = 0; i < 25; i++) {
+                printf("%d ", array[i]);
+            }
             printf("\n\n");
             goto rego;
             break;
