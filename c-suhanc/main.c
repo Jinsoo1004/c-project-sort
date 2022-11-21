@@ -13,7 +13,8 @@ void mergeSort(int a[], int start, int end);
 // 배열 출력 함수
 void printArr(int value[], int n) {
     for (int i = 0; i < n; i++)
-        printf("%3d", value[i]);
+        printf("%d 8"
+               "", value[i]);
     printf("\n");
 }
 
@@ -176,6 +177,33 @@ void mergeSort(int a[], int start, int end) {
 
     }
 }
+//합병정렬 여기까찌
+
+//힙정렬 함수
+//heapify, 힙 상태 만들기
+void heapify(int *arr, int size){
+    for(int i=1;i<size;++i){
+        int child = i;
+        do{
+            //자식 노드가 부모 노드보다 크면 교환
+            int root = (child-1)/2;
+            if(arr[root]<arr[child]){
+                int temp = arr[root];
+                arr[root] = arr[child];
+                arr[child] = temp;
+            }
+            child = root;
+        }while(child!=0);	//최상단 노드까지 점검
+    }
+}
+
+//최상단 노드와 최하단 노드 교체
+void heap(int *arr, int *size){
+    int temp = arr[0];
+    arr[0] = arr[*size-1];
+    arr[*size-1] = temp;
+    --(*size);
+}
 
 int main() {
     system("mode con cols=230 lines=30");
@@ -202,12 +230,14 @@ int main() {
            "    [] 5. 합병정렬\n"
            "    [] 6. 힙정렬\n"
            "    [] 7. 종료\n");
+    rego:
+    printf("\n");
     printf("번호 입력 : ");
     scanf("%d", &input);
 
     switch (input) {
         case 1:
-            printf("선택정렬을 선택하셨습니다\n");
+            printf("\n선택정렬을 선택하셨습니다\n");
             int value[25];
 
             printf("\n");
@@ -224,10 +254,12 @@ int main() {
             selectionSort(value, 25);
             printf("정렬 후 : ");
             printArr(value, 25);
+            printf("\n\n");
+            goto rego;
             break;
 
         case 2:
-            printf("삽입정렬을 선택하셨습니다\n");
+            printf("\n삽입정렬을 선택하셨습니다\n");
             int i;
             int list[25];
 
@@ -255,11 +287,12 @@ int main() {
             for (i = 0; i < 25; i++) {
                 printf("%d ", list[i]);
             }
-
+            printf("\n\n");
+            goto rego;
             break;
 
         case 3:
-            printf("버블정렬을 선택하셨습니다.");
+            printf("\n버블정렬을 선택하셨습니다\n");
             int array[25];
             printf("\n");
             printf("생성된 랜덤값 : ");
@@ -271,15 +304,15 @@ int main() {
             printf("\n\n\n\n");
             printf("정렬 전: ");
             printArr(array, 25);
-            printf("\n");
             bubbleSort(array, 25); // 버블정렬 함수
             printf("정렬 후 : ");
             printArr(array, 25);
-
+            printf("\n\n");
+            goto rego;
             break;
 
         case 4:
-            printf("퀵정렬을 선택하셨습니다.");
+            printf("\n퀵정렬을 선택하셨습니다\n");
             int data[25];
             printf("\n");
             printf("생성된 랜덤값 : ");
@@ -301,11 +334,12 @@ int main() {
             for (int i = 0; i < 25; i++) {
                 printf("%d ", data[i]);
             }
-
+            printf("\n\n");
+            goto rego;
             break;
 
         case 5:
-            printf("합병정렬을 선택하셨습니다.");
+            printf("\n합병정렬을 선택하셨습니다\n");
             printf("\n");
             int marray[25];
             printf("생성된 랜덤값 : ");
@@ -326,14 +360,43 @@ int main() {
             for (int i = 0; i < 25; i++) {
                 printf("%d ", marray[i]);
             }
+            printf("\n\n");
+            goto rego;
             break;
 
         case 6:
-            printf("6");
-            break;
+            printf("\n힙정렬을 선택하셨습니다\n");
+            //무작위 배열
+            int size = 25;
+            printf("\n");
+            int heaparr[25];
+            printf("생성된 랜덤값 : ");
+            for (int i = 0; i < 25; i++) { // 25번 반복
+                heaparr[i] = rand() % 99 + 1; // 난수 생성
 
+                printf("%d  ", heaparr[i]); // 출력
+            }
+            printf("\n\n\n\n");
+            printf("정렬 전: ");
+            for(int i=0;i<25;++i){
+                printf("%d ", heaparr[i]);
+            }
+            //힙정렬
+            for(int i=0;i<25;++i){
+                heapify(heaparr, size);
+                heap(heaparr, &size);
+            }
+            printf("\n");
+            //출력
+            printf("정렬 전: ");
+            for(int i=0;i<25;++i){
+                printf("%d ", heaparr[i]);
+            }
+            printf("\n\n");
+            goto rego;
+            break;
         case 7:
-            printf("7");
+            return 0;
             break;
 
         default: //else
