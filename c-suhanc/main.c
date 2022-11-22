@@ -14,8 +14,7 @@ void mergeSort(int a[], int start, int end);
 // 배열 출력 함수
 void printArr(int value[], int n) {
     for (int i = 0; i < n; i++)
-        printf("%d 8"
-               "", value[i]);
+        printf("%d ", value[i]);
     printf("\n");
 }
 
